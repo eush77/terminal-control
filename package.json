@@ -1,0 +1,25 @@
+{
+  "name": "terminal-control",
+  "version": "0.0.1",
+  "description": "Terminal escape codes made easy. Get in full control.",
+  "main": "terminal-control.js",
+  "scripts": {
+    "test": "echo 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wesolyromek/terminal-control.git"
+  },
+  "keywords": [
+    "terminal",
+    "ansi",
+    "escape",
+    "code"
+  ],
+  "author": "Adam Paszke",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wesolyromek/terminal-control/issues"
+  },
+  "homepage": "https://github.com/wesolyromek/terminal-control"
+}
