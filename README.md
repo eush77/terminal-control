@@ -3,6 +3,8 @@ terminal-control
 
 Terminal escape codes made easy. Get in full control.
 
+If your application runs in different environments, don't worry. The init function checks if the process runs in a tty. If it's not, no escape codes will be output even if you call the methods. You can override this behavior by calling ```init(true)```.
+
 # Installation
 Run the following commands to download and install the package:
 
@@ -13,7 +15,7 @@ $ npm install terminal-control
 #Usage
 
 ```
-var term = require('terminal-control');
+var term = require('terminal-control').init();
 
 term.setBold(true);
 term.moveCursorTo(5,5);
