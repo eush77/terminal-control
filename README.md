@@ -24,6 +24,10 @@ console.log('This text is displayed with an offset!');
 
 #Docs
 
+###Init
+
+* **init([override])**                 - initialize and check if the programm runs in a tty (if override != true)
+
 ###Text style
 
 * **resetTextStyle()**                  - restore default text style
