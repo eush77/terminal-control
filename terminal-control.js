@@ -37,6 +37,13 @@ Codes.init = function(override) {
             blinking = false,
             invisible = false;
         
+        this.autoClean = function() {
+            var _this = this;
+            process.on('exit', function() {
+                _this.resetTextStyle();
+            });
+            return this;
+        }
         
         //Text style
         this.refreshTextStyle = function() {
@@ -151,9 +158,10 @@ Codes.init = function(override) {
             process.stdout.write("\7");
         }
     } else {
+        this.autoClean = function() {}
         //Text style
         this.refreshTextStyle = function() {}
-        this.resetTextStyle = function () { }
+        this.resetTextStyle = function () {}
         this.setBold = function (set) {}
         this.setLowIntensity = function (set) {}
         this.setUnderline = function (set) {}

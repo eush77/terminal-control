@@ -15,7 +15,7 @@ $ npm install terminal-control
 #Usage
 
 ```
-var term = require('terminal-control').init();
+var term = require('terminal-control').init().autoClean();
 
 term.setBold(true);
 term.moveCursorTo(5,5);
@@ -26,7 +26,8 @@ console.log('This text is displayed with an offset!');
 
 ###Init
 
-* **init([override])**                 - initialize and check if the programm runs in a tty (if override != true)
+* **init([override])**                  - initialize and check if the programm runs in a tty (if override != true)
+* **autoClean()**                       - automatically reset text style to default on process exit
 
 ###Text style
 
