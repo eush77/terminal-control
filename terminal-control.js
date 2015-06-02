@@ -27,16 +27,20 @@
  */
 var Codes = {};
 
-Codes.init = function(override) {
-    if(process.stdout.isTTY && !override) {
+Codes.init = function(stream, override) {
+    if (arguments.length < 2) {
+        override = stream;
+        stream = process.stdout;
+    }
+    if(stream.isTTY && !override) {
         var topMargin = 0,
-            bottomMargin = process.stdout.rows,
+            bottomMargin = stream.rows,
             bold = false,
             lowIntensity = false,
             underline = false,
             blinking = false,
             invisible = false;
-        
+
         this.autoClean = function() {
             var _this = this;
             process.on('exit', function() {
@@ -44,18 +48,18 @@ Codes.init = function(override) {
             });
             return this;
         }
-        
+
         //Text style
         this.refreshTextStyle = function() {
             this.resetTextStyle();
-            if (bold) process.stdout.write("\033[1m");
-            if (lowIntensity) process.stdout.write("\033[2m");
-            if (underline) process.stdout.write("\033[4m");
-            if (blinking) process.stdout.write("\033[5m");
-            if (invisible) process.stdout.write("\033[8m");
+            if (bold) stream.write("\033[1m");
+            if (lowIntensity) stream.write("\033[2m");
+            if (underline) stream.write("\033[4m");
+            if (blinking) stream.write("\033[5m");
+            if (invisible) stream.write("\033[8m");
         }
         this.resetTextStyle = function () {
-            process.stdout.write("\033[m");
+            stream.write("\033[m");
         }
         this.setBold = function (set) {
             bold = set ? set : !bold;
@@ -77,85 +81,85 @@ Codes.init = function(override) {
             invisible = set ? set : !invisible;
             this.refreshTextStyle();
         }
-        
+
         //Window
         this.setWindowSize = function (top, bottom) {
             topMargin = top;
             bottomMargin = bottom;
-            process.stdout.write("\033["+top+";"+bottom+"r");
+            stream.write("\033["+top+";"+bottom+"r");
             this.moveCursorTo(0, top);
         }
-        
+
         //Movement
         this.moveCursorUp = function (lines) {
             lines = lines || 1;
-            process.stdout.write("\033["+lines+"A");
+            stream.write("\033["+lines+"A");
         }
         this.moveCursorDown = function (lines) {
             lines = lines || 1;
-            process.stdout.write("\033["+lines+"B");
+            stream.write("\033["+lines+"B");
         }
         this.moveCursorRight = function (lines) {
             lines = lines || 1;
-            process.stdout.write("\033["+lines+"C");
+            stream.write("\033["+lines+"C");
         }
         this.moveCursorLeft = function (lines) {
             lines = lines || 1;
-            process.stdout.write("\033["+lines+"D");
+            stream.write("\033["+lines+"D");
         }
         this.moveCursorToUpperLeft = function () {
-            process.stdout.write("\033[H");
+            stream.write("\033[H");
         }
         this.moveCursorTo = function (x, y) {
-            process.stdout.write("\033["+y+";"+x+"H");
+            stream.write("\033["+y+";"+x+"H");
         }
         this.scrollUp = function (lines) {
             lines = lines || 1;
             for (var i = 0; i < lines; i++) {
-                process.stdout.write("\033M");
+                stream.write("\033M");
             }
         }
         this.scrollDown = function (lines) {
             lines = lines || 1;
             for (var i = 0; i < lines; i++) {
-                process.stdout.write("\033D");
+                stream.write("\033D");
             }
         }
         this.nextLine = function () {
-            process.stdout.write("\033E");
+            stream.write("\033E");
         }
         this.saveCursor = function () {
-            process.stdout.write("\0337");
+            stream.write("\0337");
         }
         this.restoreCursor = function () {
-            process.stdout.write("\0338");
+            stream.write("\0338");
         }
-        
+
         //Clear line
         this.clearLineCursorRight = function () {
-            rocess.stdout.write("\033[0K");
+            stream.write("\033[0K");
         }
         this.clearLineCursorLeft = function () {
-            rocess.stdout.write("\033[1K");
+            stream.write("\033[1K");
         }
         this.clearLine = function () {
-            rocess.stdout.write("\033[2K");
+            stream.write("\033[2K");
         }
-        
+
         //Clear screen
         this.clearScreenCursorDown = function () {
-            process.stdout.write("\033[0J");
+            stream.write("\033[0J");
         }
         this.clearScreenCursorUp = function () {
-            process.stdout.write("\033[1J");
+            stream.write("\033[1J");
         }
         this.clearScreen = function () {
-            process.stdout.write("\033[2J");
+            stream.write("\033[2J");
         }
-        
+
         //Others
         this.ringBell = function() {
-            process.stdout.write("\7");
+            stream.write("\7");
         }
     } else {
         this.autoClean = function() {}

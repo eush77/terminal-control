@@ -26,7 +26,7 @@ console.log('This text is displayed with an offset!');
 
 ###Init
 
-* **init([override])**                  - initialize and check if the programm runs in a tty (if override != true)
+* **init([stream], [override])**                  - initialize and check if the programm runs in a tty (if override != true), stream defaults to process.stdout
 * **autoClean()**                       - automatically reset text style to default on process exit
 
 ###Text style
