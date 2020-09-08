@@ -55,6 +55,7 @@ console.log('This text is displayed with an offset!');
 * **nextLine()**                        - go to new line
 * **saveCursor()**                      - save cursor position and text attributes
 * **restoreCursor()**                   - restore saved cursor position and text attributes
+* **hideCursor([on])**                  - make cursor invisible
 
 ###Clear line
 
