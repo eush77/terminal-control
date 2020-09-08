@@ -133,13 +133,13 @@ Codes.init = function(override) {
         
         //Clear line
         this.clearLineCursorRight = function () {
-            rocess.stdout.write("\033[0K");
+            process.stdout.write("\033[0K");
         }
         this.clearLineCursorLeft = function () {
-            rocess.stdout.write("\033[1K");
+            process.stdout.write("\033[1K");
         }
         this.clearLine = function () {
-            rocess.stdout.write("\033[2K");
+            process.stdout.write("\033[2K");
         }
         
         //Clear screen
