@@ -1,25 +1,50 @@
 {
-  "name": "terminal-control",
-  "version": "0.0.4",
-  "description": "Terminal escape codes made easy. Get in full control.",
-  "main": "terminal-control.js",
-  "scripts": {
-    "test": "echo 0"
-  },
-  "repository": {
+  "_from": "github:flxm/terminal-control",
+  "_id": "terminal-control@0.0.4",
+  "_inBundle": false,
+  "_integrity": "",
+  "_location": "/terminal-control",
+  "_phantomChildren": {},
+  "_requested": {
     "type": "git",
-    "url": "https://github.com/wesolyromek/terminal-control.git"
+    "raw": "flxm/terminal-control",
+    "rawSpec": "flxm/terminal-control",
+    "saveSpec": "github:flxm/terminal-control",
+    "fetchSpec": null,
+    "gitCommittish": null
   },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "github:flxm/terminal-control#dbe4c9f8b03b0ef05cea7009e0482653059971c0",
+  "_spec": "flxm/terminal-control",
+  "_where": "D:\\Dropbox\\term",
+  "author": {
+    "name": "Adam Paszke"
+  },
+  "bugs": {
+    "url": "https://github.com/wesolyromek/terminal-control/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "Terminal escape codes made easy. Get in full control.",
+  "homepage": "https://github.com/wesolyromek/terminal-control",
   "keywords": [
     "terminal",
     "ansi",
     "escape",
     "code"
   ],
-  "author": "Adam Paszke",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/wesolyromek/terminal-control/issues"
+  "main": "terminal-control.js",
+  "name": "terminal-control",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wesolyromek/terminal-control.git"
   },
-  "homepage": "https://github.com/wesolyromek/terminal-control"
+  "scripts": {
+    "test": "echo 0"
+  },
+  "version": "0.0.5"
 }

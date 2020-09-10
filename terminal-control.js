@@ -41,6 +41,7 @@ Codes.init = function(override) {
             var _this = this;
             process.on('exit', function() {
                 _this.resetTextStyle();
+                _this.hideCursor(false);
             });
             return this;
         }
@@ -130,16 +131,20 @@ Codes.init = function(override) {
         this.restoreCursor = function () {
             process.stdout.write("\0338");
         }
+        this.hideCursor = function(on) {
+            if (on) process.stderr.write("\x1B[?25l");
+            else process.stderr.write("\x1B[?25h");
+        }
         
         //Clear line
         this.clearLineCursorRight = function () {
-            rocess.stdout.write("\033[0K");
+            process.stdout.write("\033[0K");
         }
         this.clearLineCursorLeft = function () {
-            rocess.stdout.write("\033[1K");
+            process.stdout.write("\033[1K");
         }
         this.clearLine = function () {
-            rocess.stdout.write("\033[2K");
+            process.stdout.write("\033[2K");
         }
         
         //Clear screen
@@ -183,6 +188,7 @@ Codes.init = function(override) {
         this.nextLine = function () { }
         this.saveCursor = function () {}
         this.restoreCursor = function () {}
+        this.hideCursor = function () {}
         
         //Clear line
         this.clearLineCursorRight = function () {}
@@ -198,7 +204,5 @@ Codes.init = function(override) {
     }
     return this;
 }
-
-
 
 module.exports = Codes;

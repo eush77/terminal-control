@@ -12,24 +12,24 @@ Run the following commands to download and install the package:
 $ npm install terminal-control
 ```
 
-#Usage
+# Usage
 
-```
-var term = require('terminal-control').init().autoClean();
+```javascript
+let term = require('terminal-control').init().autoClean();
 
 term.setBold(true);
 term.moveCursorTo(5,5);
 console.log('This text is displayed with an offset!');
 ```
 
-#Docs
+# Docs
 
-###Init
+### Init
 
 * **init([override])**                  - initialize and check if the programm runs in a tty (if override != true)
 * **autoClean()**                       - automatically reset text style to default on process exit
 
-###Text style
+### Text style
 
 * **resetTextStyle()**                  - restore default text style
 * **setBold([set])**                    - turn bold on or off (calling without argument toggles)
@@ -38,11 +38,11 @@ console.log('This text is displayed with an offset!');
 * **setBlinking([set])**                - turn blinking on or off (calling without argument toggles)
 * **setInvisible([set])**               - turn invisible text on or off (calling without argument toggles)
 
-###Window size
+### Window size
 
 * **setWindowSize(top, bottom)**        - set top and bottom line of a window
 
-###Cursor movement
+### Cursor control
 
 * **moveCursorUp([lines])**             - move cursor up by a number of lines (default 1)
 * **moveCursorDown([lines])**           - move cursor down by a number of lines (default 1)
@@ -55,23 +55,24 @@ console.log('This text is displayed with an offset!');
 * **nextLine()**                        - go to new line
 * **saveCursor()**                      - save cursor position and text attributes
 * **restoreCursor()**                   - restore saved cursor position and text attributes
+* **hideCursor([on])**                  - make cursor invisible
 
-###Clear line
+### Clear line
 
 * **clearLineCursorRight()**            - clear text in a line on the right from the cursor
 * **clearLineCursorLeft()**             - clear text in a line on the left from the cursor
 * **clearLine()**                       - clear current line
 
-###Clear screen
+### Clear screen
 
 * **clearScreenCursorDown()**           - clear text upon cursor
 * **clearScreenCursorUp()**             - clear text below cursor
 * **clearScreen()**                     - clear whole screen (doesn't reset the position)
 
-###Others
+### Others
 
 * **ringBell()**                        - ring the terminal bell
 
-#License
+# License
 
 See the [LICENSE](./LICENSE) file.
